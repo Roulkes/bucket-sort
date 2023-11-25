@@ -1,0 +1,49 @@
+Función ordenada(Lista):
+    Para cada i en el rango de 0 a longitud(Lista) - 1:
+        Si Lista[i] > Lista[i+1]:
+            Devolver Falso
+    Devolver Verdadero
+
+Función bogoSort(Lista):
+    Contador = 0
+    Mientras no esté ordenada(Lista):
+        Mezclar los elementos de Lista de manera aleatoria
+        Incrementar Contador
+    Imprimir Contador
+    Devolver Lista
+
+Función encuentraMenMay(Lista):
+    Devolver el mínimo y máximo valor de Lista
+
+Función preparaRecipientes(men, may):
+    Inicializar una lista de recipientes con longitud (may - men) + 1, todos con valor 0
+    Devolver la lista de recipientes
+
+Función llenar(recipientes, Lista, men):
+    Para cada elemento e en Lista:
+        Incrementar el valor en recipientes[e - men]
+    Devolver recipientes
+
+Función revisar(recipientes, men):
+    Inicializar una lista vacía LR
+    Para cada índice i en el rango de 0 a longitud(recipientes) - 1:
+        Para cada j en el rango de 0 a recipientes[i]:
+            Agregar (i + men) a LR
+    Devolver LR
+
+Función BucketSort(Lista):
+    men, may = encuentraMenMay(Lista)
+    recipientes = preparaRecipientes(men, may)
+    recipientes = llenar(recipientes, Lista, men)
+    LR = revisar(recipientes, men)
+    Devolver LR
+
+# Generar una lista de 10 números aleatorios entre 1 y 1000
+Lista = generar_lista_aleatoria(1, 1000, 10)
+
+# Llamar a BucketSort y almacenar el resultado
+resultado = BucketSort(Lista)
+
+# Imprimir la lista original y la lista ordenada
+Imprimir("Lista original:", Lista)
+Imprimir("Lista ordenada:", resultado)
